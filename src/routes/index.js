@@ -1,4 +1,4 @@
 const router = require('express').Router();
 
-router.use('/', require('./BlogRoute.js'));
+router.use('/', require('./blogRoute.js'));
 module.exports = router;

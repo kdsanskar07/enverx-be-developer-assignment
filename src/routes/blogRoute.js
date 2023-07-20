@@ -7,17 +7,17 @@ const blogControllers = require("../controllers/blogController.js");
 router.post("/posts", blogControllers.addPost);
 
 /**
- * To update post
+ * To update post by id
  */
-router.put("/posts/:id", productController.updatePost);
+router.put("/posts/:id", blogControllers.updatePost);
 
 /**
- * To delete post
+ * To delete post by id
  */
-router.delete("/posts/:id", productController.deletePost);
+router.delete("/posts/:id", blogControllers.deletePost);
 
 /**
- * To get post list
+ * To get post by id
  */
 router.get("/posts/:id", blogControllers.getPost);
 
