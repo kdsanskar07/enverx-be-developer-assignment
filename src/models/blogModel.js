@@ -6,27 +6,24 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
+
   title: {
     type: String,
     required: true,
   },
+
   category: {
     type: Array,
     required: true,
   },
+
   // CreatedBy UserId
-  author: {
+  authorId: {
     type: String,
     required: true,
   },
-  likesCount: {
-    type: Number,
-    default: 0,
-  },
-  likedByUser: {
-    type: Array,
-  },
-  date: {
+
+  createdAt: {
     type: Date,
     index: true,
   },

@@ -9,7 +9,7 @@ router.post("/posts", blogControllers.addPost);
 /**
  * To update post by id
  */
-router.put("/posts/:id", blogControllers.updatePost);
+router.put('/posts/:id', blogControllers.updatePost);
 
 /**
  * To delete post by id
