@@ -47,6 +47,7 @@ const addPost = async (req, res) => {
 
     const blogObj = {
       createdAt: new Date(),
+      updatedAt: new Date(),
       content,
       title,
       categoryIds,
@@ -114,6 +115,16 @@ const updatePost = async (req, res) => {
       updatedObj = { ...updatedObj, categoryIds };
     }
 
+    if (!Object.length(updatedObj).length) {
+      const errorMessage = "No vaild attributes to update";
+      console.log("Inside blogController.updatePost, error", errorMessage);
+      return res.status(400).json({
+        success: false,
+        message: errorMessage,
+      });
+    }
+
+    updatedObj = { ...updatedObj, updatedAt: new Date() };
     updatedObj = await Blog.updateOne(updatedObj);
     console.log("Updated blog: ", updatedObj);
 
@@ -198,17 +209,24 @@ const getPost = async (req, res) => {
  */
 const getAllPosts = async (req, res) => {
   try {
-    console.log("Inside blogController.getAllPosts");
+    console.log("Inside blogController.getAllPosts", { params: req.body });
 
-    const blogs = await Blog.find({});
+    const { categoryIds, sortOrder } = req.body;
+    let searchQuery = {};
 
-    return res
-      .status(200)
-      .json({
-        success: true,
-        msg: "Successfully fetched all blogs",
-        data: blogs,
-      });
+    if (categoryIds && categoryIds.length) {
+      searchQuery.categoryIds = { $in: categoryIds };
+    }
+
+    const blogs = await Blog.find(searchQuery).sort({
+      date: sortOrder === "desc" ? -1 : 1,
+    });
+
+    return res.status(200).json({
+      success: true,
+      msg: "Successfully fetched all blogs",
+      data: blogs,
+    });
   } catch (error) {
     console.log("Inside blogController.getAllPosts", error);
     return res.status(400).json({

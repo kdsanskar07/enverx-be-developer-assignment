@@ -12,7 +12,7 @@ const postSchema = new Schema({
     required: true,
   },
 
-  category: {
+  categoryIds: {
     type: Array,
     required: true,
   },
@@ -24,6 +24,11 @@ const postSchema = new Schema({
   },
 
   createdAt: {
+    type: Date,
+    index: true,
+  },
+
+  updatedAt: {
     type: Date,
     index: true,
   },
