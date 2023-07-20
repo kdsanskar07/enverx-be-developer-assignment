@@ -57,7 +57,7 @@ const addPost = async (req, res) => {
     const blogRes = await Blog(blogObj).save();
     console.log("Created a new blog: ", blogRes);
 
-    return res.status(201).json({ success: true, msg: "Created new blog" });
+    return res.status(201).json({ success: true, message: "Created new blog" });
   } catch (error) {
     console.log("Inside blogController.addPost, error", error);
     return res.status(500).json({
@@ -128,7 +128,7 @@ const updatePost = async (req, res) => {
     updatedObj = await Blog.updateOne(updatedObj);
     console.log("Updated blog: ", updatedObj);
 
-    return res.status(200).json({ success: true, msg: "Updated blog" });
+    return res.status(200).json({ success: true, message: "Updated blog" });
   } catch (error) {
     console.log("Inside blogController.updatePost", error);
     return res.status(500).json({
@@ -154,7 +154,7 @@ const deletePost = async (req, res) => {
 
     console.log(`Deleted blog with id: ${blogId}`);
 
-    return res.status(200).json({ success: true, msg: "Updated blog" });
+    return res.status(200).json({ success: true, message: "Deleted blog" });
   } catch (error) {
     console.log("Inside blogController.deletePost", error);
     return res.status(500).json({
@@ -188,7 +188,7 @@ const getPost = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      msg: "Successfully fetched all blogs",
+      message: "Successfully fetched blogs",
       data: blogObj,
     });
   } catch (error) {
@@ -224,7 +224,7 @@ const getAllPosts = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      msg: "Successfully fetched all blogs",
+      message: "Successfully fetched all blogs",
       data: blogs,
     });
   } catch (error) {
