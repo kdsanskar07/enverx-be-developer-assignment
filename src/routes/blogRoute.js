@@ -22,8 +22,8 @@ router.delete("/posts/:id", blogControllers.deletePost);
 router.get("/posts/:id", blogControllers.getPost);
 
 /**
- * To get post list
+ * To get all posts
  */
-router.get("/posts", blogControllers.getPostList);
+router.get("/posts", blogControllers.getAllPosts);
 
 module.exports = router;
