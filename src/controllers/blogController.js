@@ -209,17 +209,17 @@ const getPost = async (req, res) => {
  */
 const getAllPosts = async (req, res) => {
   try {
-    console.log("Inside blogController.getAllPosts", { params: req.body });
+    console.log("Inside blogController.getAllPosts", { params: req.params });
 
-    const { categoryIds, sortOrder } = req.body;
+    const { categoryId, sortOrder } = req.params;
     let searchQuery = {};
 
-    if (categoryIds && categoryIds.length) {
-      searchQuery.categoryIds = { $in: categoryIds };
+    if (categoryId) {
+      searchQuery.categoryIds = { $in: [categoryId] };
     }
 
     const blogs = await Blog.find(searchQuery).sort({
-      date: sortOrder === "desc" ? -1 : 1,
+      createdAt: sortOrder === "desc" ? -1 : 1,
     });
 
     return res.status(200).json({

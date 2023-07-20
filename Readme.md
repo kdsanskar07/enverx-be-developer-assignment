@@ -158,7 +158,7 @@ Example:
 
 Retrieving Posts based on category and sorted by date(asc by default)
 
-Endpoint: `http://localhost:3000/posts?category=Family&sortBy=date`
+Endpoint: `http://localhost:3000/posts?categoryId=react&sortOrder=asc`
 
 Response:
 

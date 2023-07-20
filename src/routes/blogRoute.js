@@ -24,6 +24,6 @@ router.get("/posts/:id", blogControllers.getPost);
 /**
  * To get all posts
  */
-router.get("/posts", blogControllers.getAllPosts);
+router.get("/posts/:categoryId/:sortOrder", blogControllers.getAllPosts);
 
 module.exports = router;
